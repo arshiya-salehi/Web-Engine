@@ -1,16 +1,22 @@
 """
-Disk-Based Indexer Script
-Builds inverted index with periodic disk offloading (Developer option)
+Main Indexer Script
+Builds inverted index from JSON files containing web pages
 """
 
 import json
 import os
 import sys
 from pathlib import Path
+
+# Add shared directory to path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'shared'))
 from html_parser import HTMLParser
 from tokenizer import Tokenizer
 from stemmer import Stemmer
-from disk_indexer import DiskBasedIndexer
+
+# Import local indexer
+sys.path.insert(0, os.path.dirname(__file__))
+from indexer import InvertedIndex
 
 
 def process_json_file(file_path, html_parser, tokenizer, stemmer):
@@ -58,39 +64,33 @@ def process_json_file(file_path, html_parser, tokenizer, stemmer):
         return None
 
 
-def build_index_disk(data_dir, output_dir='index', max_docs_in_memory=10000):
+def build_index(data_dir, output_dir='index'):
     """
-    Build inverted index with disk-based offloading
+    Build inverted index from JSON files in data directory
     
     Args:
         data_dir: Directory containing subdirectories with JSON files
         output_dir: Directory to save the index
-        max_docs_in_memory: Maximum documents to process before offloading
     """
-    print(f"Building disk-based index from {data_dir}...")
-    print(f"Memory limit: {max_docs_in_memory} documents per partial index")
-    print("="*60)
+    print(f"Building index from {data_dir}...")
     
     # Initialize components
     html_parser = HTMLParser()
     tokenizer = Tokenizer()
     stemmer = Stemmer()
-    
-    # Use disk-based indexer
-    index = DiskBasedIndexer(output_dir, max_docs_in_memory)
+    index = InvertedIndex()
     
     # Find all JSON files
     json_files = list(Path(data_dir).rglob('*.json'))
     total_files = len(json_files)
     
-    print(f"Found {total_files} JSON files to process\n")
+    print(f"Found {total_files} JSON files to process")
     
     # Process each file
     processed_count = 0
     for i, json_file in enumerate(json_files, 1):
         if i % 100 == 0:
-            print(f"Processing file {i}/{total_files}... "
-                  f"(Partial indexes created: {index.get_partial_index_count()})")
+            print(f"Processing file {i}/{total_files}...")
         
         result = process_json_file(json_file, html_parser, tokenizer, stemmer)
         if result:
@@ -99,38 +99,28 @@ def build_index_disk(data_dir, output_dir='index', max_docs_in_memory=10000):
             processed_count += 1
     
     print(f"\nProcessed {processed_count} documents")
-    print(f"Created {index.get_partial_index_count()} partial indexes during construction")
     
-    # Finalize: merge all partial indexes
-    print("\nFinalizing index...")
-    index.finalize()
+    # Save index to disk
+    print("Saving index to disk...")
+    index.save_to_disk(output_dir)
     
     # Calculate statistics
     num_docs = index.get_num_documents()
-    num_tokens = index.get_num_unique_tokens(output_dir)
+    num_tokens = index.get_num_unique_tokens()
     index_size_kb = index.get_index_size_kb(output_dir)
-    partial_count = index.get_partial_index_count()
     
-    print("\n" + "="*60)
+    print("\n" + "="*50)
     print("INDEX STATISTICS")
-    print("="*60)
+    print("="*50)
     print(f"Number of indexed documents: {num_docs}")
     print(f"Number of unique tokens: {num_tokens}")
     print(f"Total size of index on disk: {index_size_kb:.2f} KB")
-    print(f"Partial indexes created (offloads): {partial_count}")
-    print("="*60)
-    
-    # Verify we offloaded at least 3 times
-    if partial_count < 3:
-        print(f"\n⚠️  WARNING: Only {partial_count} partial indexes created.")
-        print("   Requirements specify at least 3 offloads during construction.")
-        print("   Consider reducing max_docs_in_memory to ensure more offloads.")
+    print("="*50)
     
     return {
         'num_documents': num_docs,
         'num_unique_tokens': num_tokens,
-        'index_size_kb': index_size_kb,
-        'partial_indexes': partial_count
+        'index_size_kb': index_size_kb
     }
 
 
@@ -139,38 +129,18 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         data_dir = sys.argv[1]
     else:
-        # Default to DEV dataset for Developer option
+        # Default to ANALYST dataset
         script_dir = os.path.dirname(os.path.abspath(__file__))
-        data_dir = os.path.join(script_dir, 'DEV')
+        data_dir = os.path.join(script_dir, 'ANALYST')
         if not os.path.exists(data_dir):
-            data_dir = os.path.join(script_dir, 'ANALYST')
+            data_dir = os.path.join(script_dir, 'DEV')
     
     if not os.path.exists(data_dir):
         print(f"Error: Data directory '{data_dir}' does not exist")
         sys.exit(1)
     
-    # Determine max_docs_in_memory based on dataset size
-    json_files = list(Path(data_dir).rglob('*.json'))
-    total_files = len(json_files)
-    
-    # Calculate to ensure at least 3 offloads (4 partial indexes total)
-    # We want: total_files / max_docs >= 3, so max_docs <= total_files / 3
-    # But also want reasonable chunk sizes, so use total_files / 4 for safety
-    if total_files > 20000:
-        max_docs = max(5000, total_files // 10)  # Ensure at least 10 offloads for large datasets
-    elif total_files > 10000:
-        max_docs = max(3000, total_files // 8)  # Ensure at least 8 offloads
-    elif total_files > 5000:
-        max_docs = max(1500, total_files // 4)  # Ensure at least 4 offloads
-    else:
-        # For smaller datasets, ensure at least 3 offloads
-        max_docs = max(300, total_files // 4)  # Will create at least 3-4 partial indexes
-    
-    print(f"Estimated documents: ~{total_files}")
-    print(f"Using max_docs_in_memory: {max_docs} (will ensure at least 3 offloads)\n")
-    
     # Build the index
-    stats = build_index_disk(data_dir, max_docs_in_memory=max_docs)
+    stats = build_index(data_dir)
     
     # Save statistics to file for report generation
     stats_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'index_stats.json')
