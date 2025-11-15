@@ -1,0 +1,126 @@
+{
+  "cristina lopes": {
+    "results": [
+      {
+        "rank": 1,
+        "url": "https://www.informatics.uci.edu/explore/faculty-profiles/cristina-lopes/",
+        "score": 36.74900678342067
+      },
+      {
+        "rank": 2,
+        "url": "https://www.informatics.uci.edu/2017/01/",
+        "score": 27.127324413815916
+      },
+      {
+        "rank": 3,
+        "url": "https://www.informatics.uci.edu/2017/10/",
+        "score": 27.127324413815916
+      },
+      {
+        "rank": 4,
+        "url": "https://www.informatics.uci.edu/2017/08/",
+        "score": 27.127324413815916
+      },
+      {
+        "rank": 5,
+        "url": "https://www.informatics.uci.edu/explore/facts-figures/",
+        "score": 23.31902806313675
+      }
+    ],
+    "num_results": 5,
+    "query_time_ms": 155.53879737854004
+  },
+  "machine learning": {
+    "results": [
+      {
+        "rank": 1,
+        "url": "https://www.cs.uci.edu/singh-to-deliver-machine-learning-talk-at-july-oc-acm-meetup/",
+        "score": 13.777125443081207
+      },
+      {
+        "rank": 2,
+        "url": "https://www.cs.uci.edu/news/",
+        "score": 12.89659324572984
+      },
+      {
+        "rank": 3,
+        "url": "https://www.cs.uci.edu/professor-singh-awarded-two-nsf-grants-to-advance-machine-learning/",
+        "score": 12.835228421156291
+      },
+      {
+        "rank": 4,
+        "url": "https://www.cs.uci.edu/news/page/16/",
+        "score": 12.611508818712117
+      },
+      {
+        "rank": 5,
+        "url": "https://www.cs.uci.edu/multidisciplinary-graduate-training-program-advances-wildfire-prediction-research/",
+        "score": 12.550143994138566
+      }
+    ],
+    "num_results": 5,
+    "query_time_ms": 0.4379749298095703
+  },
+  "ACM": {
+    "results": [
+      {
+        "rank": 1,
+        "url": "https://www.informatics.uci.edu/two-ics-professors-named-2015-acm-fellows/",
+        "score": 12.626868223741663
+      },
+      {
+        "rank": 2,
+        "url": "https://www.informatics.uci.edu/ics-alumni-named-to-acm-future-of-computing-academy/",
+        "score": 11.737045507552189
+      },
+      {
+        "rank": 3,
+        "url": "https://www.informatics.uci.edu/update-franz-dourish-formally-recognized-as-acm-fellows/",
+        "score": 11.463604219555275
+      },
+      {
+        "rank": 4,
+        "url": "https://www.informatics.uci.edu/informatics-professors-weave-sustainability-into-the-fabric-of-computing-with-comm-acm-paper/",
+        "score": 10.823413841100091
+      },
+      {
+        "rank": 5,
+        "url": "https://www.informatics.uci.edu/informatics-ph-d-student-saumya-gupta-receives-acm-w-scholarship-for-tei-19/",
+        "score": 10.440317344354064
+      }
+    ],
+    "num_results": 5,
+    "query_time_ms": 0.19812583923339844
+  },
+  "master of software engineering": {
+    "results": [
+      {
+        "rank": 1,
+        "url": "https://www.informatics.uci.edu/grad/mswe/",
+        "score": 7.125029126814035
+      },
+      {
+        "rank": 2,
+        "url": "https://www.informatics.uci.edu/grad/ms-software-engineering/",
+        "score": 6.2401555272211535
+      },
+      {
+        "rank": 3,
+        "url": "https://www.informatics.uci.edu/grad/courses/",
+        "score": 6.200191455721921
+      },
+      {
+        "rank": 4,
+        "url": "https://www.informatics.uci.edu/undergrad/courses/",
+        "score": 6.126418959160123
+      },
+      {
+        "rank": 5,
+        "url": "https://www.informatics.uci.edu/training-tomorrows-software-engineers/",
+        "score": 5.795483436282483
+      }
+    ],
+    "num_results": 5,
+    "query_time_ms": 2.2649765014648438
+  }
+}
