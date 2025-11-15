@@ -339,18 +339,40 @@ Both reports include:
 
 ---
 
-## Next Steps (Milestone 2)
+## Milestone 2: Retrieval Component ✅
 
-### Analyst Option
-- Implement search component
-- Target: Query response < 2 seconds
-- Can load entire index in memory for fast lookups
+### Status
+✅ **Completed** - Search component implemented with boolean AND queries and tf-idf ranking
 
-### Developer Option
-- Implement disk-based search component
-- Target: Query response ≤ 300ms
-- Must read postings from disk (not load entire index)
-- Requires efficient disk-based data structures
+### Developer Option Implementation
+- **Location:** `DEVELOPER_OPTION/`
+- **Files:**
+  - `search_engine.py` - Core search engine with boolean AND and tf-idf
+  - `search.py` - Interactive console search interface
+  - `test_queries.py` - Test script for required queries
+  - `generate_m2_report.py` - PDF report generator
+
+### Features Implemented
+- ✅ Boolean AND queries (all terms must be present)
+- ✅ TF-IDF scoring for ranking results
+- ✅ Important word boosting (1.5x for bold/headings/titles)
+- ✅ Query tokenization and stemming
+- ✅ Console-based search interface
+- ✅ Test queries: cristina lopes, machine learning, ACM, master of software engineering
+
+### Usage
+```bash
+cd DEVELOPER_OPTION
+python3 test_queries.py      # Test required queries
+python3 generate_m2_report.py # Generate PDF report
+python3 search.py             # Interactive search
+```
+
+### Next Steps (Milestone 3)
+- Optimize for ≤ 300ms response time
+- Implement disk-based index access (not load entire index)
+- Add additional ranking features
+- Optional: Web interface (extra credit)
 
 ---
 
