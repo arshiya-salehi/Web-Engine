@@ -362,11 +362,37 @@ Both reports include:
 
 ### Usage
 ```bash
-cd DEVELOPER_OPTION
+cd SRC
 python3 test_queries.py      # Test required queries
 python3 generate_m2_report.py # Generate PDF report
-python3 search.py             # Interactive search
+python3 search.py             # Interactive console search
+python3 web_search.py         # Web interface (Extra Credit - 2 points)
 ```
+
+### Web Interface (Extra Credit - 2 points) 🌐
+A modern web interface is available for the search engine:
+
+**Quick Start:**
+```bash
+cd SRC
+pip3 install flask           # Install Flask (one-time)
+python3 web_search.py        # Start web server
+# Then open: http://localhost:5000
+```
+
+**Features:**
+- ✅ Modern, beautiful web UI
+- ✅ Input queries in a search box
+- ✅ Clickable result links (open in new tabs)
+- ✅ Real-time search results
+- ✅ Example query buttons
+- ✅ Test queries page
+
+**Files:**
+- `SRC/web_search.py` - Flask web application
+- `SRC/templates/search.html` - Main search interface
+- `SRC/templates/test_queries.html` - Test queries page
+- `SRC/WEB_INTERFACE_README.md` - Detailed web interface guide
 
 ### Next Steps (Milestone 3)
 - Optimize for ≤ 300ms response time

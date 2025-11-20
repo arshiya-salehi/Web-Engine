@@ -1,0 +1,57 @@
+======================================================================
+Search Engine - Boolean AND Queries
+======================================================================
+
+Search engine initialized successfully.
+
+----------------------------------------------------------------------
+Query: cristina lopes
+----------------------------------------------------------------------
+
+Found 5 results (in 153.25 ms)
+
+1. [36.7490] https://www.informatics.uci.edu/explore/faculty-profiles/cristina-lopes/
+2. [27.1273] https://www.informatics.uci.edu/2017/01/
+3. [27.1273] https://www.informatics.uci.edu/2017/10/
+4. [27.1273] https://www.informatics.uci.edu/2017/08/
+5. [23.3190] https://www.informatics.uci.edu/explore/facts-figures/
+
+----------------------------------------------------------------------
+Query: machine learning
+----------------------------------------------------------------------
+
+Found 5 results (in 0.47 ms)
+
+1. [13.7771] https://www.cs.uci.edu/singh-to-deliver-machine-learning-talk-at-july-oc-acm-meetup/
+2. [12.8966] https://www.cs.uci.edu/news/
+3. [12.8352] https://www.cs.uci.edu/professor-singh-awarded-two-nsf-grants-to-advance-machine-learning/
+4. [12.6115] https://www.cs.uci.edu/news/page/16/
+5. [12.5501] https://www.cs.uci.edu/multidisciplinary-graduate-training-program-advances-wildfire-prediction-research/
+
+----------------------------------------------------------------------
+Query: ACM
+----------------------------------------------------------------------
+
+Found 5 results (in 0.20 ms)
+
+1. [12.6269] https://www.informatics.uci.edu/two-ics-professors-named-2015-acm-fellows/
+2. [11.7370] https://www.informatics.uci.edu/ics-alumni-named-to-acm-future-of-computing-academy/
+3. [11.4636] https://www.informatics.uci.edu/update-franz-dourish-formally-recognized-as-acm-fellows/
+4. [10.8234] https://www.informatics.uci.edu/informatics-professors-weave-sustainability-into-the-fabric-of-computing-with-comm-acm-paper/
+5. [10.4403] https://www.informatics.uci.edu/informatics-ph-d-student-saumya-gupta-receives-acm-w-scholarship-for-tei-19/
+
+----------------------------------------------------------------------
+Query: master of software engineering
+----------------------------------------------------------------------
+
+Found 5 results (in 2.36 ms)
+
+1. [7.1250] https://www.informatics.uci.edu/grad/mswe/
+2. [6.2402] https://www.informatics.uci.edu/grad/ms-software-engineering/
+3. [6.2002] https://www.informatics.uci.edu/grad/courses/
+4. [6.1264] https://www.informatics.uci.edu/undergrad/courses/
+5. [5.7955] https://www.informatics.uci.edu/training-tomorrows-software-engineers/
+
+======================================================================
+End of search interface demonstration
+======================================================================

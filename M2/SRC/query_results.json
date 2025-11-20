@@ -28,7 +28,7 @@
       }
     ],
     "num_results": 5,
-    "query_time_ms": 155.53879737854004
+    "query_time_ms": 150.48813819885254
   },
   "machine learning": {
     "results": [
@@ -59,7 +59,7 @@
       }
     ],
     "num_results": 5,
-    "query_time_ms": 0.4379749298095703
+    "query_time_ms": 0.4248619079589844
   },
   "ACM": {
     "results": [
@@ -90,7 +90,7 @@
       }
     ],
     "num_results": 5,
-    "query_time_ms": 0.19812583923339844
+    "query_time_ms": 0.1926422119140625
   },
   "master of software engineering": {
     "results": [
@@ -121,6 +121,6 @@
       }
     ],
     "num_results": 5,
-    "query_time_ms": 2.2649765014648438
+    "query_time_ms": 2.3038387298583984
   }
 }
